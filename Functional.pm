@@ -1320,9 +1320,18 @@ In Haskell:
 
 sub any(&$) {
   my($p, $xs) = @_;
-  map {
-    return 1 if $p->($_);
-  } @{$xs};
+  my $n = 0;
+  my $size = $#{$xs};
+  while ($n <= $size) {
+    return 1 if $p->($xs->[$n]);
+    $n++;
+  }
+  if ($size == $Language::Functional::INFINITE
+      or $size == $Language::Functional::INFINITE - 1
+  ) {
+    confess "Evaluating predicate on inifinite number of elements " .
+      "would never end!";
+  }
   return 0;
 }
 
@@ -1345,10 +1354,18 @@ In Haskell:
 
 sub all(&$) {
   my($p, $xs) = @_;
-  map {
-    my $x = $_;
-    return 0 if not $p->($x);
-  } @{$xs};
+  my $n = 0;
+  my $size = $#{$xs};
+  while ($n <= $size) {
+    return 0 if not $p->($xs->[$n]);
+    $n++;
+  }
+  if ($size == $Language::Functional::INFINITE
+      or $size == $Language::Functional::INFINITE - 1
+  ) {
+    confess "Evaluating predicate on inifinite number of elements " .
+      "would never end!";
+  }
   return 1;
 }
 

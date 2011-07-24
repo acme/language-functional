@@ -1,5 +1,8 @@
 Revision history for Perl module Functional.
 
+0.05
+    - make all and any work on infinite lists (patch by Petr Pisar)
+
 0.04 Fri Dec 12 22:15:30 GMT 2008
     - rename Changes to CHANGES
     - move test to t/
