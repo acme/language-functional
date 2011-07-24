@@ -8,7 +8,7 @@ use vars qw($VERSION @ISA @EXPORT_OK %EXPORT_TAGS $INFINITE);
 require Exporter;
 
 @ISA = qw(Exporter);
-$VERSION = '0.04';
+$VERSION = '0.05';
 $INFINITE = 8192;
 
 my @methods = qw(show inc double square cons max min even odd 
